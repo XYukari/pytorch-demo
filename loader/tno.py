@@ -1,6 +1,5 @@
 import os
 
-import torch
 from torch.utils.data import Dataset, DataLoader
 from torchvision.transforms import Resize
 
@@ -19,9 +18,6 @@ class TNO(Dataset):
         return min(len(self.ir_images), len(self.vi_images))
 
     def __getitem__(self, idx):
-        if idx >= len(self):
-            raise IndexError("Dataset index out of range")
-
         ir_image_path = os.path.join(self.ir_dir, self.ir_images[idx])
         vi_image_path = os.path.join(self.vi_dir, self.vi_images[idx])
 
